@@ -21,7 +21,7 @@ router.post("/signup", (req, res) => {
     .catch();
 });
 
-router.post("/signin", (req, res) => {
+router.post("/login", (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
 
