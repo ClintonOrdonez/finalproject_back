@@ -38,4 +38,16 @@ router.post("/login", (req, res) => {
     .catch(error => res.send(error.message));
 });
 
+// Check whether an email is already in database and return count
+router.post("/check", (req, res) => {
+  let email = req.body.email;
+
+  User.find({ email: email }).then(result =>
+    res
+      .status(200)
+      .send({ count: result.length })
+      .catch(error => res.send(error.message))
+  );
+});
+
 module.exports = router;
