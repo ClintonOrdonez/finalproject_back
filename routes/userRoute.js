@@ -38,7 +38,8 @@ router.post("/login", (req, res) => {
     .catch(error => res.send(error.message));
 });
 
-// Check whether an email is already in database and return count
+// Check whether an email is in database and return count:
+// 0 email is not present; 1 email is present
 router.post("/check", (req, res) => {
   let email = req.body.email;
 
