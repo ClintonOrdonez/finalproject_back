@@ -51,4 +51,17 @@ router.post("/check", (req, res) => {
   );
 });
 
+// router.post("/change", (req, res) => {
+//   let password = req.body.password;
+//   let password = req.body.password;
+
+//   let newPassword = new Password();
+//   newPassword.password = password;
+//   newPassword.password = newPassword.generateHash(password);
+//   newUser
+//     .save()
+//     .then(result => res.send(result))
+//     .catch();
+// });
+
 module.exports = router;
