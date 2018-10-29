@@ -40,7 +40,7 @@ router.post("/login", (req, res) => {
 
 // Check whether an email is in database and return count:
 // 0 email is not present; 1 email is present
-router.post("/check", (req, res) => {
+router.post("/checkEmail", (req, res) => {
   let email = req.body.email;
 
   User.find({ email: email }).then(result =>
