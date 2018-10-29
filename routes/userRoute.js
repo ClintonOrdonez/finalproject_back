@@ -51,6 +51,20 @@ router.post("/checkEmail", (req, res) => {
   );
 });
 
+// Check whether an email has a matching password:
+// true password is correct, false password is incorrect
+router.post("/checkPassword", (req, res) => {
+  let email = req.body.email;
+  let password = req.body.password;
+
+  User.findOne({ email: email }).then(result =>
+    res
+      .status(200)
+      .send(result.validPassword(password))
+      .catch(error => res.send(error.message))
+  );
+});
+
 // router.post("/change", (req, res) => {
 //   let password = req.body.password;
 //   let password = req.body.password;
