@@ -65,11 +65,29 @@ router.post("/checkPassword", (req, res) => {
   );
 });
 
-router.put("/update", (req, res) => {
+router.put("/updateEmail", (req, res) => {
+  let oldEmail = req.body.oldEmail;
+  let newEmail = req.body.newEmail;
+
+  User.findOneAndUpdate({ email: oldEmail }, { email: newEmail }, { new: true })
+    .then(result => res.send(result))
+    .catch(error => res.status(400).send(error));
+});
+
+router.put("/updatePassword", (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
 
-  User.findOneAndUpdate({ email: email });
+  let tempUser = new User();
+  tempUser.password = tempUser.generateHash(password);
+
+  User.findOneAndUpdate(
+    { email: email },
+    { password: tempUser.password },
+    { new: true }
+  )
+    .then(result => res.send(result))
+    .catch(error => res.status(400).send(error));
 });
 
 // router.post("/change", (req, res) => {
