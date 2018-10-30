@@ -32,7 +32,7 @@ router.post("/login", (req, res) => {
         res.send(noPassword);
       } else {
         console.log(result);
-        res.send("Incorrect email and/or password.");
+        res.send("Invalid email and/or password.");
       }
     })
     .catch(error => res.send(error.message));
@@ -63,6 +63,13 @@ router.post("/checkPassword", (req, res) => {
       .send(result.validPassword(password))
       .catch(error => res.send(error.message))
   );
+});
+
+router.put("/update", (req, res) => {
+  let email = req.body.email;
+  let password = req.body.password;
+
+  User.findOneAndUpdate({ email: email });
 });
 
 // router.post("/change", (req, res) => {
