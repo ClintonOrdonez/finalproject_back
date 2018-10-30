@@ -32,7 +32,7 @@ router.post("/login", (req, res) => {
         res.send(noPassword);
       } else {
         console.log(result);
-        res.send("Email and/or password incorrect.");
+        res.send("Incorrect email and/or password.");
       }
     })
     .catch(error => res.send(error.message));
