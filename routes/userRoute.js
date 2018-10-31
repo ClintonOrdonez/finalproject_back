@@ -65,6 +65,8 @@ router.post("/checkPassword", (req, res) => {
   );
 });
 
+// Searches database by email property using oldEmail
+// Updates email property with newEmail
 router.put("/updateEmail", (req, res) => {
   let oldEmail = req.body.oldEmail;
   let newEmail = req.body.newEmail;
@@ -74,6 +76,8 @@ router.put("/updateEmail", (req, res) => {
     .catch(error => res.status(400).send(error));
 });
 
+// Searches database by email property
+// Updates password property with encrypted tempUser.password
 router.put("/updatePassword", (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
