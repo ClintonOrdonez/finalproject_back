@@ -51,7 +51,7 @@ router.post("/checkEmail", (req, res) => {
   );
 });
 
-// Check whether an email has a matching password:
+// Check whether an email has a matching password and returns boolean:
 // true password is correct, false password is incorrect
 router.post("/checkPassword", (req, res) => {
   let email = req.body.email;
