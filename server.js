@@ -40,7 +40,7 @@ db.once("open", () => {
 // Listen to the ready event
 app.on("ready", () => {
   // Setup out app to listen on a port and start up
-  let server = app.listen(8080, () => {
+  let server = app.listen(process.env.PORT || 8080, () => {
     let port = server.address().port;
     // Output to console the port being used
     console.log("Running on port", port);
