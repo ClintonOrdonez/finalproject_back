@@ -76,13 +76,17 @@ router.put("/updateEmail", (req, res) => {
     { email: newEmail },
     { new: true }
   )
-    .then(result => res.send(result))
+    .then(result => {
+      // console.log(result);
+      res.send(result);
+    })
     .catch(error => res.status(400).send(error));
 });
 
 // Searches database by email property
 // Updates password property with encrypted tempUser.password
 router.put("/updatePassword", (req, res) => {
+  // console.log(req.body);
   let email = req.body.email;
   let password = req.body.password;
 
@@ -94,7 +98,10 @@ router.put("/updatePassword", (req, res) => {
     { password: tempUser.password },
     { new: true }
   )
-    .then(result => res.send(result))
+    .then(result => {
+      // console.log(result);
+      res.send(result);
+    })
     .catch(error => res.status(400).send(error));
 });
 
