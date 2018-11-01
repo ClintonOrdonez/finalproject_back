@@ -68,10 +68,14 @@ router.post("/checkPassword", (req, res) => {
 // Searches database by email property using oldEmail
 // Updates email property with newEmail
 router.put("/updateEmail", (req, res) => {
-  let oldEmail = req.body.oldEmail;
+  let currentEmail = req.body.currentEmail;
   let newEmail = req.body.newEmail;
 
-  User.findOneAndUpdate({ email: oldEmail }, { email: newEmail }, { new: true })
+  User.findOneAndUpdate(
+    { email: currentEmail },
+    { email: newEmail },
+    { new: true }
+  )
     .then(result => res.send(result))
     .catch(error => res.status(400).send(error));
 });
