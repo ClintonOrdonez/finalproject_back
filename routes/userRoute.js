@@ -2,11 +2,11 @@ let router = require("express").Router();
 let User = require("../models/User");
 
 // Get a list of users
-router.get("/", (req, res) => {
-  User.find()
-    .then(result => res.send(result))
-    .catch(error => res.status(500).send(error));
-});
+// router.get("/", (req, res) => {
+//   User.find()
+//     .then(result => res.send(result))
+//     .catch(error => res.status(500).send(error));
+// });
 
 router.post("/signup", (req, res) => {
   let email = req.body.email;
