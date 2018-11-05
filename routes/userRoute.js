@@ -106,7 +106,7 @@ router.put("/updatePassword", (req, res) => {
 });
 
 // Find user by email property and delete from database
-router.delete("/delete", (req, res) => {
+router.delete("/deleteAccount", (req, res) => {
   let email = req.body.email;
 
   User.findOneAndDelete({ email: email })
