@@ -27,7 +27,7 @@ router.post("/login", (req, res) => {
 
   User.findOne({ email: email })
     .then(result => {
-      if (result && result.validPassword(password)) {
+      if (result && result.validPassword(password) === true) {
         let { password, ...noPassword } = result._doc;
         res.send(noPassword);
       } else {
@@ -105,17 +105,15 @@ router.put("/updatePassword", (req, res) => {
     .catch(error => res.status(400).send(error));
 });
 
-// router.post("/change", (req, res) => {
-//   let password = req.body.password;
-//   let password = req.body.password;
+// Find user by email property and delete from database
+router.delete("/delete", (req, res) => {
+  let email = req.body.email;
 
-//   let newPassword = new Password();
-//   newPassword.password = password;
-//   newPassword.password = newPassword.generateHash(password);
-//   newUser
-//     .save()
-//     .then(result => res.send(result))
-//     .catch();
-// });
+  User.findOneAndDelete({ email: email })
+    .then(result => {
+      res.send(result);
+    })
+    .catch(error => res.status(400).send(error));
+});
 
 module.exports = router;

@@ -43,6 +43,6 @@ app.on("ready", () => {
   let server = app.listen(process.env.PORT || 8080, () => {
     let port = server.address().port;
     // Output to console the port being used
-    console.log("Running on port", port);
+    console.log("Running on port:", port);
   });
 });
