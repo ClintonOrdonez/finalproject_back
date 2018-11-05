@@ -65,7 +65,7 @@ router.post("/checkPassword", (req, res) => {
   );
 });
 
-// Searches database by email property using oldEmail
+// Searches database by email property using currentEmail
 // Updates email property with newEmail
 router.put("/updateEmail", (req, res) => {
   let currentEmail = req.body.currentEmail;
@@ -105,7 +105,8 @@ router.put("/updatePassword", (req, res) => {
     .catch(error => res.status(400).send(error));
 });
 
-// Find user by email property and delete from database
+// Searches database by email property
+// Deletes found record from database
 router.delete("/deleteAccount", (req, res) => {
   let email = req.body.email;
 
