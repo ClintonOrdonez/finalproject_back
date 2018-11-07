@@ -109,6 +109,7 @@ router.put("/updatePassword", (req, res) => {
 // Deletes found record from database
 router.delete("/deleteAccount", (req, res) => {
   let email = req.body.email;
+  // console.log("email: " + email);
 
   User.findOneAndDelete({ email: email })
     .then(result => {
