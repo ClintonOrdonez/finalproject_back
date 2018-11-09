@@ -14,7 +14,7 @@ router.post("/signup", (req, res) => {
 
   let newUser = new User();
   newUser.email = email;
-  newUser.password = newUser.generateHash(password);
+  newUser.password = newUser.encryptPassword(password);
   newUser
     .save()
     .then(result => res.send(result))
@@ -91,7 +91,7 @@ router.put("/updatePassword", (req, res) => {
   let password = req.body.password;
 
   let tempUser = new User();
-  tempUser.password = tempUser.generateHash(password);
+  tempUser.password = tempUser.encryptPassword(password);
 
   User.findOneAndUpdate(
     { email: email },
@@ -112,6 +112,25 @@ router.delete("/deleteAccount", (req, res) => {
   // console.log("email: " + email);
 
   User.findOneAndDelete({ email: email })
+    .then(result => {
+      res.send(result);
+    })
+    .catch(error => res.status(400).send(error));
+});
+
+// Searches database by email property
+// Updates resetPasswordExpiration property with current time plus expirationMinutes
+router.put("/resetPassword", (req, res) => {
+  let email = req.body.email;
+  let date = new Date();
+  const expirationMinutes = 15;
+  let expirationDate = date.setMinutes(date.getMinutes() + expirationMinutes);
+
+  User.findOneAndUpdate(
+    { email: email },
+    { resetPasswordExpiration: expirationDate },
+    { new: true }
+  )
     .then(result => {
       res.send(result);
     })

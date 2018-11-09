@@ -25,6 +25,7 @@ mongoose.connect(
   mongoDB,
   { useNewUrlParser: true }
 );
+mongoose.set("useCreateIndex", true);
 
 // Get the connections
 let db = mongoose.connection;
