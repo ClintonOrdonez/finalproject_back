@@ -125,7 +125,9 @@ router.put("/resetPassword", (req, res) => {
   let email = req.body.email;
   let date = new Date();
   const expirationMinutes = 15;
-  let resetPasswordLink = "http://localhost:3000/resetPassword/";
+  // let resetPasswordLink = "http://localhost:3000/resetPassword/";
+  let resetPasswordLink =
+    "https://team-gestalt-app.herokuapp.com/resetPassword/";
   let resetPasswordToken;
   let resetPasswordExpiration = date.setMinutes(
     date.getMinutes() + expirationMinutes
