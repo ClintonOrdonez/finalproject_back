@@ -160,19 +160,19 @@ function resetPasswordEmail(email, resetPasswordLink, resetPasswordToken) {
 
   // setup email data with unicode symbols
   let mailOptions = {
-    from: "team-gestalt@no-reply.com", // sender address
+    from: "teamgestalt.bot@gmail.com", // sender address
     to: email, // list of receivers
     subject: "Reset Password Request", // Subject line
     text:
       "Please use the following link to reset your password: " +
       resetPasswordLink +
       resetPasswordToken +
-      " This is an automated email; please do not respond to this email address.", // plain text body
+      " This link will expire in 15 minutes. This is an automated email; please do not respond to this email address.", // plain text body
     html:
       "Please use the following link to reset your password:<br/>" +
       resetPasswordLink +
       resetPasswordToken +
-      "<br/>This is an automated email; please do not respond to this email address." // html body
+      "<br/>This link will expire in 15 minutes.<br/>This is an automated email; please do not respond to this email address." // html body
   };
 
   // send mail with defined transport object
@@ -188,5 +188,13 @@ function resetPasswordEmail(email, resetPasswordLink, resetPasswordToken) {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   });
 }
+
+router.post("/findResetPasswordToken", (req, res) => {
+  let resetPasswordToken = req.body.resetPasswordToken;
+
+  User.findOne({ password: resetPasswordToken })
+    .then(result => res.send(result))
+    .catch(error => res.status(500).send(error));
+});
 
 module.exports = router;
