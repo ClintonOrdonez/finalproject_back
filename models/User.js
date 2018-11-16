@@ -6,7 +6,7 @@ let UserSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     signUpDate: { type: Date, default: Date.now() },
-    // resetPasswordToken: { type: String },
+    theme: { type: Number, default: 1 },
     resetPasswordExpiration: { type: Date }
   },
   { collection: "finalProjectUsers" }
