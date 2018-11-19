@@ -144,7 +144,7 @@ router.put("/resetPassword", (req, res) => {
   console.log(resetPasswordToken);
 });
 
-router.post("/findResetPasswordToken", (req, res) => {
+router.post("/checkResetPasswordToken", (req, res) => {
   let resetPasswordToken = req.body.resetPasswordToken;
 
   User.findOne({ password: resetPasswordToken })
