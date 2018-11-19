@@ -95,7 +95,7 @@ router.put("/updatePassword", (req, res) => {
 
   User.findOneAndUpdate(
     { email: email },
-    { password: tempUser.password },
+    { password: tempUser.password, resetPasswordExpiration: null },
     { new: true }
   )
     .then(result => {

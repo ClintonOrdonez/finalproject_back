@@ -4,11 +4,11 @@ const nodemailer = require("nodemailer");
 
 let UserSchema = new mongoose.Schema(
   {
+    signUpDate: { type: Date, default: Date.now() },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    signUpDate: { type: Date, default: Date.now() },
     theme: { type: Number, default: 1 },
-    resetPasswordExpiration: { type: Date }
+    resetPasswordExpiration: { type: Date, default: null }
   },
   { collection: "finalProjectUsers" }
 );
