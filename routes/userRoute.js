@@ -140,8 +140,6 @@ router.put("/resetPassword", (req, res) => {
       res.send(result);
     })
     .catch(error => res.status(400).send(error));
-
-  console.log(resetPasswordToken);
 });
 
 router.post("/checkResetPasswordToken", (req, res) => {
