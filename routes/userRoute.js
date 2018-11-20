@@ -156,7 +156,7 @@ router.put("/updateTheme", (req, res) => {
 
   User.findOneAndUpdate({ email: email }, { theme: theme }, { new: true })
     .then(result => {
-      res.send(result.body.theme);
+      res.send(result);
     })
     .catch(error => res.status(400).send(error));
 });
