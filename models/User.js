@@ -8,6 +8,12 @@ let UserSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     theme: { type: Number, default: 1 },
+    ticTacToeStats: {
+      games: { type: Number, default: 0 },
+      xWins: { type: Number, default: 0 },
+      oWins: { type: Number, default: 0 },
+      draws: { type: Number, default: 0 }
+    },
     resetPasswordExpiration: { type: Date, default: null }
   },
   { collection: "finalProjectUsers" }

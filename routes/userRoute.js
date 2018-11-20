@@ -161,4 +161,24 @@ router.put("/updateTheme", (req, res) => {
     .catch(error => res.status(400).send(error));
 });
 
+router.put("/updateTicTacToeStats", (req, res) => {
+  let email = req.body.email;
+  let games = req.body.games;
+  let xWins = req.body.xWins;
+  let oWins = req.body.oWins;
+  let draws = req.body.draws;
+
+  User.findOneAndUpdate(
+    { email: email },
+    {
+      ticTacToeStats: { games: games, xWins: xWins, oWins: oWins, draws: draws }
+    },
+    { new: true }
+  )
+    .then(result => {
+      res.send(result);
+    })
+    .catch(error => res.status(400).send(error));
+});
+
 module.exports = router;
