@@ -31,7 +31,6 @@ router.post("/login", (req, res) => {
         let { password, ...noPassword } = result._doc;
         res.send(noPassword);
       } else {
-        console.log(result);
         res.send("Invalid email and/or password.");
       }
     })
@@ -77,7 +76,6 @@ router.put("/updateEmail", (req, res) => {
     { new: true }
   )
     .then(result => {
-      // console.log(result);
       res.send(result);
     })
     .catch(error => res.status(400).send(error));
@@ -86,7 +84,6 @@ router.put("/updateEmail", (req, res) => {
 // Searches database by email property
 // Updates password property with encrypted tempUser.password
 router.put("/updatePassword", (req, res) => {
-  // console.log(req.body);
   let email = req.body.email;
   let password = req.body.password;
 
@@ -99,7 +96,6 @@ router.put("/updatePassword", (req, res) => {
     { new: true }
   )
     .then(result => {
-      // console.log(result);
       res.send(result);
     })
     .catch(error => res.status(400).send(error));
@@ -109,7 +105,6 @@ router.put("/updatePassword", (req, res) => {
 // Deletes found record from database
 router.delete("/deleteAccount", (req, res) => {
   let email = req.body.email;
-  // console.log("email: " + email);
 
   User.findOneAndDelete({ email: email })
     .then(result => {
