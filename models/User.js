@@ -27,9 +27,9 @@ UserSchema.methods.validPassword = function(password) {
 };
 
 UserSchema.methods.resetPasswordEmail = function(email, resetPasswordToken) {
-  let resetPasswordLink = "http://localhost:3000/resetPassword/";
-  // let resetPasswordLink =
-  //   "https://team-gestalt-app.herokuapp.com/resetPassword/";
+  // let resetPasswordLink = "http://localhost:3000/resetPassword/";
+  let resetPasswordLink =
+    "https://team-gestalt-app.herokuapp.com/resetPassword/";
 
   let transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
