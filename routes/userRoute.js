@@ -42,12 +42,9 @@ router.post("/login", (req, res) => {
 router.post("/checkEmail", (req, res) => {
   let email = req.body.email;
 
-  User.find({ email: email }).then(result =>
-    res
-      .status(200)
-      .send({ count: result.length })
-      .catch(error => res.send(error.message))
-  );
+  User.find({ email: email })
+    .then(result => res.status(200).send({ count: result.length }))
+    .catch(error => res.send(error.message));
 });
 
 // Check whether an email has a matching password and returns boolean:
@@ -56,12 +53,9 @@ router.post("/checkPassword", (req, res) => {
   let email = req.body.email;
   let password = req.body.password;
 
-  User.findOne({ email: email }).then(result =>
-    res
-      .status(200)
-      .send(result.validPassword(password))
-      .catch(error => res.send(error.message))
-  );
+  User.findOne({ email: email })
+    .then(result => res.status(200).send(result.validPassword(password)))
+    .catch(error => res.send(error.message));
 });
 
 // Searches database by email property using currentEmail
