@@ -18,7 +18,8 @@ app.use(morgan("dev"));
 app.use(require("./routes"));
 
 // Easy to refer to long string, connection to our mongodb
-let mongoDB = "mongodb+srv://user:51gtz8WcfTDtzOeo@teamgestalt.nn99x.mongodb.net/clinton?retryWrites=true&w=majority";
+let mongoDB = "mongodb://user:password1@ds115753.mlab.com:15753/clinton";
+// let mongoDB = "mongodb+srv://user:51gtz8WcfTDtzOeo@teamgestalt.nn99x.mongodb.net/clinton?retryWrites=true&w=majority";
 
 // Connect to the database
 mongoose.connect(
